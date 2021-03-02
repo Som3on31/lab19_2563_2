@@ -76,10 +76,15 @@ void Unit::guard(){
 }
 
 int Unit::heal(){
-    if (hp<hpmax){
-        int healhp = rand()%21 +10;
-        if (healhp + hp > hpmax) return hpmax - hp;
-        else return healhp;
+    int healhp = rand()%21 + 10;
+    if (healhp + hp > hpmax){
+        healhp = hpmax - hp;
+        hp += healhp;
+        return healhp;
+    }
+    else{
+        hp += healhp;
+        return healhp;
     }
 }
 
@@ -96,6 +101,8 @@ int Unit::beAttacked(int oppatk){
         return (oppatk-def)/3;
     }
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 //Write function members isDead(), guard(), heal(), beAttacked(), and attack() here//
