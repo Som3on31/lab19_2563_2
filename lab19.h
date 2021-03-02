@@ -87,6 +87,16 @@ int Unit::attack(Unit &a){
 	return a.beAttacked(atk);
 }
 
+int Unit::beAttacked(int oppatk){
+    if(guard_on==false){
+        hp -= oppatk-def;
+        return oppatk-def;
+    }else{
+        hp -= (oppatk-def)/3;
+        return (oppatk-def)/3;
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////////////
 //Write function members isDead(), guard(), heal(), beAttacked(), and attack() here//
 /////////////////////////////////////////////////////////////////////////////////////
